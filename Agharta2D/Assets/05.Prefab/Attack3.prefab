@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7058744465386960776}
   m_Layer: 0
   m_Name: Attack3
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,9 +96,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PC: {fileID: 0}
+  GM: {fileID: 0}
+  rgd: {fileID: 0}
+  type: 0
   throwPower: 10
   throwAngle: 15
-  rgd: {fileID: 0}
   speed: 0
 --- !u!61 &-3195229324189048944
 BoxCollider2D:

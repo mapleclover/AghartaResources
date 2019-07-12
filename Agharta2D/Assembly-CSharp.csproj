@@ -62,10 +62,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\01.Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\01.Scripts\DevilArmControl.cs" />
+    <Compile Include="Assets\01.Scripts\FireControl.cs" />
+    <Compile Include="Assets\01.Scripts\GameManager.cs" />
     <Compile Include="Assets\01.Scripts\MainOption.cs" />
+    <Compile Include="Assets\01.Scripts\MonsterControl.cs" />
     <Compile Include="Assets\01.Scripts\OptionOption.cs" />
     <Compile Include="Assets\01.Scripts\PlayerControl.cs" />
-    <Compile Include="Assets\01.Scripts\PotionThrow.cs" />
+    <Compile Include="Assets\01.Scripts\PotionThrowEarth.cs" />
+    <Compile Include="Assets\01.Scripts\PotionThrowFire.cs" />
+    <Compile Include="Assets\01.Scripts\PotionThrowIce.cs" />
+    <Compile Include="Assets\01.Scripts\PotionThrowNormal.cs" />
+    <Compile Include="Assets\01.Scripts\SoundControl.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

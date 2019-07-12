@@ -14,7 +14,6 @@ public class OptionOption : MonoBehaviour
         coloring();//시작하면 바로 선택된 메뉴(0) 색칠
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))//엔터를 쳤을시
@@ -32,6 +31,7 @@ public class OptionOption : MonoBehaviour
             coloring();
         }
     }
+    
     /**
     void MenuSelect()//메뉴선택
     {

@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7828423989032773234}
   - component: {fileID: 4424947087898854439}
-  - component: {fileID: 5892050294310759098}
+  - component: {fileID: -6369488942145591790}
   - component: {fileID: 617023553656220724}
   - component: {fileID: 7671657059951676433}
   m_Layer: 0
   m_Name: Attack2
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5892050294310759098
+--- !u!114 &-6369488942145591790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,13 +92,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2897951244103061491}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 442e596916e177b488a9fd585a8696cd, type: 3}
+  m_Script: {fileID: 11500000, guid: e0bd54f916e7bd94597f10ad87fe97b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PC: {fileID: 0}
+  GM: {fileID: 0}
+  rgd: {fileID: 0}
+  type: 0
   throwPower: 10
   throwAngle: 15
-  rgd: {fileID: 0}
   speed: 0
 --- !u!61 &617023553656220724
 BoxCollider2D:

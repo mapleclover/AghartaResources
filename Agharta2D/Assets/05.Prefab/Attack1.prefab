@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5460258237903822000}
   - component: {fileID: 3774644740065442844}
-  - component: {fileID: 1874221249325011047}
   - component: {fileID: 5837394074416358314}
+  - component: {fileID: 3861878433776225808}
   - component: {fileID: -931994266389801980}
   m_Layer: 0
   m_Name: Attack1
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,23 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1874221249325011047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4147881524980762274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 442e596916e177b488a9fd585a8696cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PC: {fileID: 0}
-  throwPower: 10
-  throwAngle: 15
-  rgd: {fileID: 0}
-  speed: 0
 --- !u!61 &5837394074416358314
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,6 +109,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.75, y: 4.86}
   m_EdgeRadius: 0
+--- !u!114 &3861878433776225808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4147881524980762274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d84c2e2c07416d47b835c0268234b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PC: {fileID: 0}
+  GM: {fileID: 0}
+  rgd: {fileID: 0}
+  type: 0
+  throwPower: 10
+  throwAngle: 15
+  speed: 0
 --- !u!50 &-931994266389801980
 Rigidbody2D:
   serializedVersion: 4
