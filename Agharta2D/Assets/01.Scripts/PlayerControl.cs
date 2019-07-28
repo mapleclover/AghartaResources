@@ -16,9 +16,9 @@ public class PlayerControl : MonoBehaviour
     }
     public State state = State.idle;
 
-    public float horizontal; //움직임 감지 변수
+    public float horizontal, vertical; //종횡움직임 감지 변수
     public float speed, jump; //횡움직임 속도 점프 속도 변수
-    public float climbSpeed, vertical; //종움직임 감지/속도변수
+    public float climbSpeed; //종움직임/속도변수
     
     public Rigidbody2D Rigidbody;
     public Animator Anim;
@@ -27,7 +27,7 @@ public class PlayerControl : MonoBehaviour
     public int hashRun, hashJump, hashThrowing, hashHurt, hashDead;
 
     public float checkDistance; //사다리 확인 체크
-    public LayerMask whatIsLadder; //사다리 레이어
+    public LayerMask whatIsLadder,whatIsGround; //사다리,땅 레이어
 
     public bool canJump = false; //점프 확인 플래그
     public bool facingRight = true; //오른쪽/왼쪽 방향 플래그
@@ -143,9 +143,19 @@ public class PlayerControl : MonoBehaviour
                 flip();//좌우 반전
             }
 
-            if (Input.GetAxis("Horizontal") != 0)
+            if(Input.GetAxis("Horizontal") != 0)
             {
                 PCMove();//좌우 움직임
+            }
+
+            RaycastHit2D hitinfoG = Physics2D.Raycast(transform.position, Vector2.down, checkDistance, whatIsGround);//바닥체크
+            if (hitinfoG.collider != null)
+            {
+                canJump = true;
+            }
+            else
+            {
+                canJump = false;
             }
 
             RaycastHit2D hitinfo = Physics2D.Raycast(transform.position, Vector2.up, checkDistance, whatIsLadder);//사다리 체크
@@ -155,12 +165,11 @@ public class PlayerControl : MonoBehaviour
                 {
                     isClimbing = true;
                     canJump = false;
-                    canShoot = false;
                 }
             }
             else
             {
-                if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+                if(Input.GetAxisRaw("Horizontal") != 0 && hitinfo.collider == null)
                 {
                     isClimbing = false;
                 }   
@@ -175,7 +184,6 @@ public class PlayerControl : MonoBehaviour
             else//사다리에서 벗어나오면 중력 되돌림
             {
                 Rigidbody.gravityScale = 1;
-                canShoot = true;
             }
 
             if (canJump && Input.GetKeyDown(KeyCode.LeftAlt))//점프가능한지? + 점프키 확인
@@ -183,9 +191,8 @@ public class PlayerControl : MonoBehaviour
                 Rigidbody.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftControl) && canShoot && ammo > 0)//스킬사용
+            if (Input.GetKeyDown(KeyCode.LeftControl) && canShoot && ammo > 0 && !isClimbing)//스킬사용
             {
-                ammo -= 1;
                 StartCoroutine(ThrowPower());
             }            
 
@@ -193,6 +200,10 @@ public class PlayerControl : MonoBehaviour
             {
                 PCSkill();
             }
+        }
+        else if(isDead)
+        {
+            PCDied();
         }
     }
 
@@ -235,7 +246,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    public void PCDamagedFire()//화염 도트데미지
+    /*public void PCDamagedFire()//화염 도트데미지
     {
         if (invincFire == false)
         {
@@ -263,7 +274,7 @@ public class PlayerControl : MonoBehaviour
         }
         SR.color = new Color32(255, 255, 255, 255);
         invincFire = false;
-    }
+    }*/
 
     IEnumerator invincible()//피격후 무적시간
     {
@@ -292,23 +303,11 @@ public class PlayerControl : MonoBehaviour
         StartCoroutine(PCAction());
     }
 
-    void OnCollisionStay2D(Collision2D collision)//바닥이랑 접해있는동안은 점프 가능
+    void OnCollisionStay2D(Collision2D collision)//적이랑 계속붙어있으면 무적시간이 풀렸을때 데미지입게하기
     {
-        if(collision.gameObject.tag == "Ground")//바닥이랑 붙어있을시 점프 가능
-        { 
-            canJump = true;
-        }
         if(collision.gameObject.tag == "Enemy" && !invinc)
         {
             PCDamaged(collision.gameObject);
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)//바닥이랑 떨어지게 되면 점프 불가능
-    {
-        if(collision.gameObject.tag =="Ground")
-        {
-            canJump = false;
         }
     }
 
@@ -356,6 +355,7 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(0.3f);//공격모션후 날라가는 딜레이
         if (!isDead && canMove)
         {
+            ammo -= 1;
             GameObject potion = Instantiate(Skill[skilltype]) as GameObject;
             playerPos = this.transform.position;
             if (facingRight)

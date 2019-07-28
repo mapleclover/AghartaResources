@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     public GameObject Fire;
+    public float checkDistance;
+    public LayerMask whatIsGround;
     private float x, y;
 
     void Awake()
@@ -15,19 +17,13 @@ public class GameManager : MonoBehaviour
 
     public void CreateFire(Vector3 exppos)//폭발위치
     {
-        int i = 0;
-        Collider2D[] HitColliders = Physics2D.OverlapCircleAll(exppos, 3f);
-        while(i < HitColliders.Length)
+        RaycastHit2D hitinfoG = Physics2D.Raycast(exppos, Vector2.down, checkDistance, whatIsGround);
+        if(hitinfoG.collider != null)
         {
-            if(HitColliders[i].tag == "Ground")
-            {
-                GameObject Go = Instantiate(Fire) as GameObject;
-                x = exppos.x;
-                y = HitColliders[i].transform.position.y;
-                Go.transform.position = new Vector2(x,y);
-                break;
-            }
-            i++;
+            GameObject Go = Instantiate(Fire) as GameObject;
+            x = exppos.x;
+            y = hitinfoG.collider.gameObject.transform.position.y;
+            Go.transform.position = new Vector2(x, y);
         }       
     }
 }

@@ -12,9 +12,10 @@ public class FireControl : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<DevilArmControl>() != null)
+        if (collision.GetComponent<HandHP>() != null)
         {
-            collision.GetComponent<DevilArmControl>().ApplyDOT(5);
+
+            collision.GetComponent<HandHP>().ApplyDOT(5);
         }
     }
 }

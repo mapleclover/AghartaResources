@@ -38,11 +38,14 @@ public class PotionThrowFire : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             GM.GetComponent<SoundControl>().SoundGlassBreak();
-            if (collision.gameObject.GetComponent<MonsterControl>().FireWeakness == true)
+            if(collision.GetComponent<MonsterControl>() != null)
             {
+                if (collision.gameObject.GetComponent<MonsterControl>().FireWeakness == true)
+                {
+                    collision.gameObject.GetComponent<MonsterControl>().Damaged();
+                }
                 collision.gameObject.GetComponent<MonsterControl>().Damaged();
             }
-            collision.gameObject.GetComponent<MonsterControl>().Damaged();
             Destroy(this.gameObject);
         }
         else if (collision.gameObject.tag == "Ground")

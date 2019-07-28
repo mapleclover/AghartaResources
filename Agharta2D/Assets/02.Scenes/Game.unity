@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 511508603}
   - component: {fileID: 511508602}
   - component: {fileID: 511508601}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -308,13 +308,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   horizontal: 0
-  speed: 3
-  jump: 5
-  climbSpeed: 3
   vertical: 0
+  speed: 5
+  jump: 8
+  climbSpeed: 5
   Rigidbody: {fileID: 0}
   Anim: {fileID: 742791608}
   SR: {fileID: 0}
+  BC2D: {fileID: 0}
   hashRun: 0
   hashJump: 0
   hashThrowing: 0
@@ -324,6 +325,9 @@ MonoBehaviour:
   whatIsLadder:
     serializedVersion: 2
     m_Bits: 512
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 768
   canJump: 0
   facingRight: 1
   canShoot: 1
@@ -848,7 +852,7 @@ GameObject:
   - component: {fileID: 1872427134}
   - component: {fileID: 1872427133}
   - component: {fileID: 1872427132}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}

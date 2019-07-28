@@ -38,7 +38,10 @@ public class PotionThrowNormal : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             GM.GetComponent<SoundControl>().SoundGlassBreak();
-            collision.gameObject.GetComponent<MonsterControl>().Damaged();
+            if(collision.GetComponent<MonsterControl>() != null)
+            {
+                collision.gameObject.GetComponent<MonsterControl>().Damaged();
+            }
             Destroy(this.gameObject);
         }
         else if (collision.gameObject.tag == "Ground")

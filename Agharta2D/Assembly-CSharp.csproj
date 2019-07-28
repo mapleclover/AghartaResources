@@ -63,7 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\01.Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\01.Scripts\DevilArmControl.cs" />
+    <Compile Include="Assets\01.Scripts\Devil\Generator.cs" />
+    <Compile Include="Assets\01.Scripts\Devil\HandHP.cs" />
+    <Compile Include="Assets\01.Scripts\Devil\HandMovement.cs" />
+    <Compile Include="Assets\01.Scripts\Devil\HeadControl.cs" />
+    <Compile Include="Assets\01.Scripts\Devil\MagmaMovement.cs" />
+    <Compile Include="Assets\01.Scripts\Devil\WarningSignControl.cs" />
     <Compile Include="Assets\01.Scripts\FireControl.cs" />
     <Compile Include="Assets\01.Scripts\GameManager.cs" />
     <Compile Include="Assets\01.Scripts\MainOption.cs" />
