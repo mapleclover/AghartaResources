@@ -93,3 +93,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Head: {fileID: 79257813839865773}
+  BreathAttack: {fileID: 6326791296923314317, guid: ad3aacc3116acc74e8b9fcd0d79b42d5,
+    type: 3}

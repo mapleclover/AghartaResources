@@ -12,6 +12,7 @@ public class PlayerControl : MonoBehaviour
         jump,
         throwing,
         hurt,
+        climb,
         dead
     }
     public State state = State.idle;
@@ -69,7 +70,7 @@ public class PlayerControl : MonoBehaviour
     {
         while (!isDead)
         {
-            if (HP <= 0 || this.transform.position.y < -2f)
+            if (HP <= 0)
             {
                 state = State.dead;
             }
@@ -80,6 +81,10 @@ public class PlayerControl : MonoBehaviour
             else if (!canShoot)
             {
                 state = State.throwing;
+            }
+            else if (isClimbing)
+            {
+                state = State.climb;
             }
             else if (!canJump)
             {
@@ -245,36 +250,6 @@ public class PlayerControl : MonoBehaviour
             StartCoroutine(invincible());
         }
     }
-
-    /*public void PCDamagedFire()//화염 도트데미지
-    {
-        if (invincFire == false)
-        {
-            invincFire = true;
-            HP -= 1;
-            StartCoroutine(FireInvinc());
-        }
-    }
-
-    IEnumerator FireInvinc()//화염 도트데미지 주기간 깜빡임
-    {
-        int countTime = 0;
-        while (countTime < 10)
-        {
-            if (countTime % 2 == 0)
-            {
-                SR.color = new Color32(255, 255, 255, 90);
-            }
-            else
-            {
-                SR.color = new Color32(255, 255, 255, 180);
-            }
-            yield return new WaitForSeconds(0.1f);
-            countTime++;
-        }
-        SR.color = new Color32(255, 255, 255, 255);
-        invincFire = false;
-    }*/
 
     IEnumerator invincible()//피격후 무적시간
     {

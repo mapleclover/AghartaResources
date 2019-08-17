@@ -47,13 +47,13 @@ public class Generator : MonoBehaviour
         GameObject Warn = Instantiate(WarningSign) as GameObject;
         Warn.transform.position = WarnPos[3];
         yield return new WaitForSeconds(2.0f);
-        GameObject Hand = Instantiate(Magma) as GameObject;
-        Hand.transform.position = GenPos[3];
+        GameObject magma = Instantiate(Magma) as GameObject;
+        magma.transform.position = GenPos[3];
     }
 
     void HeadTrans()
     {
-        GameObject Hand = Instantiate(DevilHead) as GameObject;
-        Hand.transform.position = GenPos[4];
+        GameObject Head = Instantiate(DevilHead) as GameObject;
+        Head.transform.position = GenPos[4];
     }
 }
